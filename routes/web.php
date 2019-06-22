@@ -15,4 +15,5 @@ Route::get('/laravel', function () {
 	return view('welcome');
 Route::resource('/accounts', 'AccountController');
 Route::resource('/account_types', 'AccountTypeController');
+Route::resource('/banks', 'BankController');
 });
