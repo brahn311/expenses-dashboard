@@ -12,5 +12,7 @@
 */
 
 Route::get('/laravel', function () {
-    return view('welcome');
+	return view('welcome');
+Route::resource('/accounts', 'AccountController');
+Route::resource('/account_types', 'AccountTypeController');
 });
