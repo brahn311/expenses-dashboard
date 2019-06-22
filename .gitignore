@@ -1,3 +1,4 @@
+# # GitHub .gitignore
 vendor/
 node_modules/
 npm-debug.log
@@ -18,3 +19,8 @@ Homestead.json
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+
+# # Laravel/Homestead (not duplicate) .gitignore 
+.env.backup
+.phpunit.result.cache
+yarn-error.log
