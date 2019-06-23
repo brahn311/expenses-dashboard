@@ -4,11 +4,11 @@
 	<div class="content">
 		<div class="row">
 			<div class="col">
-				<h1>Banks List</h1>
+				<h1>Account Types List</h1>
 				<table class="table">
-					@foreach($banks as $bank)
+					@foreach($account_types as $account_type)
 						<tr>
-							<td>{{ $bank->name }}</td>
+							<td>{{ $account_type->name }}</td>
 						</tr>
 					@endforeach
 				</table>
