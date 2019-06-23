@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Bank;
 
 class BankController extends Controller
 {
@@ -12,9 +13,11 @@ class BankController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-    }
+	{
+		return view('bank.index', [
+			'banks' => Bank::all()
+		]);
+	}
 
     /**
      * Show the form for creating a new resource.
