@@ -14,14 +14,15 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<form action="/banks" method="POST">
+				<form action="/accounts" method="POST">
+					@csrf
 					<div class="form-group">
 						<label for="number">Number:</label>
 						<input type="text" class="form-control" id="number" name="number"  autocomplete="off" placeholder="Type an account number">
 					</div>
 					<div class="form-group">
 						<label for="type_id">Type:</label>
-						<select class="form-control" id="exampleFormControlSelect1">
+						<select class="form-control" id="type_id" name="type_id">
 							@forelse ($types as $type)
 								<option value="{{ $type->id }}">{{ $type->name }}</option>
 							@empty
@@ -31,7 +32,7 @@
 					</div>
 					<div class="form-group">
 						<label for="bank_id">Bank:</label>
-						<select class="form-control" id="exampleFormControlSelect2">
+						<select class="form-control" id="bank_id" name="bank_id">
 							@forelse ($banks as $bank)
 								<option value="{{ $bank->id }}">{{ $bank->name }}</option>
 							@empty

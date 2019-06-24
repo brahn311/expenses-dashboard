@@ -15,6 +15,7 @@
 		<div class="row">
 			<div class="col">
 				<form action="/banks" method="POST">
+					@csrf
 					<div class="form-group">
 						<label for="name">Bank name:</label>
 						<input type="text" class="form-control" id="name" name="name"  autocomplete="off" placeholder="Type a name">

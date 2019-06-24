@@ -33,11 +33,14 @@ class BankController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+		$bank = new Bank();
+		$bank->name = $request->get('name');
+		$bank->save();
+		return redirect('/banks');
     }
 
     /**

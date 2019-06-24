@@ -33,11 +33,14 @@ class AccountTypeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+		$account_type = new AccountType();
+		$account_type->name = $request->get('name');
+		$account_type->save();
+		return redirect('/account_types');
     }
 
     /**

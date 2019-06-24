@@ -54,11 +54,17 @@ class AccountController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResonse
      */
     public function store(Request $request)
     {
-        //
+		$account = new Account();
+		$account->number = $request->get('number');
+		$account->type_id = $request->get('type_id');
+		$account->bank_id = $request->get('bank_id');
+		$account->branch = $request->get('branch');
+		$account->save();
+		return redirect('/accounts');
     }
 
     /**
