@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Account;
+/*
+use App\AccountType;
+use App\Bank;
+*/
 
 class AccountController extends Controller
 {
@@ -26,7 +30,16 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+		$types = \DB::table('account_types')->get();
+		$banks = \DB::table('banks')->get();
+		return view('account.create', [
+			'types' => $types,
+			'banks' => $banks
+			/*
+			'types' => AccountType::all(),
+			'banks' => Bank::all()
+			 */
+		]);
     }
 
     /**
