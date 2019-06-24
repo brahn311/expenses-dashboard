@@ -18,6 +18,7 @@
 					@foreach($accounts as $account)
 						<tr>
 							<td>{{ $account->number }}</td>
+							<td><a href="/accounts/{{ $account->id }}/edit">Edit</a></td>
 						</tr>
 					@endforeach
 				</table>

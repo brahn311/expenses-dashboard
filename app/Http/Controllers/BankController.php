@@ -62,7 +62,10 @@ class BankController extends Controller
      */
     public function edit($id)
     {
-        //
+		$bank = Bank::findOrFail($id);
+		return view('bank.edit', [
+			'bank' => $bank
+		]);
     }
 
     /**
@@ -74,7 +77,10 @@ class BankController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		$bank = Bank::find($id);
+		$bank->name = $request->get('name');
+		$bank->save();
+		return redirect('/banks');
     }
 
     /**

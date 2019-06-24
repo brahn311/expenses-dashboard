@@ -18,6 +18,7 @@
 					@foreach($banks as $bank)
 						<tr>
 							<td>{{ $bank->name }}</td>
+							<td><a href="/banks/{{ $bank->id }}/edit">Edit</a></td>
 						</tr>
 					@endforeach
 				</table>

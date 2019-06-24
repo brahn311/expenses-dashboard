@@ -62,7 +62,10 @@ class AccountTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+		$type = AccountType::findOrFail($id);
+		return view('accountType.edit', [
+			'type' => $type
+		]);
     }
 
     /**
@@ -74,7 +77,10 @@ class AccountTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		$type = AccountType::find($id);
+		$type->name = $request->get('name');
+		$type->save();
+		return redirect('/account_types');
     }
 
     /**

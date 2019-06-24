@@ -75,18 +75,25 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+		//
     }
 
-    /**
+	/**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+	{
+		$account = Account::findOrFail($id);
+		$types = AccountType::all();
+		$banks = Bank::all();
+		return view('account.edit', [
+			'account' => $account,
+			'types' => $types,
+			'banks' => $banks
+		]);
     }
 
     /**
@@ -98,8 +105,14 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+		$account = Account::find($id);
+		$account->number = $request->get('number');
+		$account->type_id = $request->get('type_id');
+		$account->bank_id = $request->get('bank_id');
+		$account->branch = $request->get('branch');
+		$account->save();
+		return redirect('/accounts');
+	}
 
     /**
      * Remove the specified resource from storage.
