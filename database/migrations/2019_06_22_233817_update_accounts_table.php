@@ -28,6 +28,8 @@ class UpdateAccountsTable extends Migration
 				->comment('Bank id');
 			$table->string('branch', 40)
 				->nullable();
+				->after('bank_id')
+				->comment('Branch Office');
 			$table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade')->onUpdate('cascade');
 			$table->foreign('type_id')->references('id')->on('account_types')->onDelete('cascade')->onUpdate('cascade');
         });

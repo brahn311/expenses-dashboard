@@ -15,8 +15,8 @@ class UpdateBanksTable extends Migration
     {
         Schema::table('banks', function (Blueprint $table) {
 			$table->string('name', 40)
-				  ->after('id')
 				  ->nullable(false)
+				  ->after('id')
 				  ->comment('Bank name');
         });
     }

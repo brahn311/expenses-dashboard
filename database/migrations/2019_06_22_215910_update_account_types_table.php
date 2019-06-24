@@ -15,8 +15,8 @@ class UpdateAccountTypesTable extends Migration
     {
         Schema::table('account_types', function (Blueprint $table) {
 			$table->string('name', 40)
-				  ->after('id')
 				  ->nullable(false)
+				  ->after('id')
 				  ->comment('Account type name');
         });
     }
