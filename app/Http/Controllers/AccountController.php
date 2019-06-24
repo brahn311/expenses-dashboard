@@ -3,15 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Account;
-/*
-use App\AccountType;
-use App\Bank;
-*/
+use App\{Account, AccountType, Bank};
 
 class AccountController extends Controller
 {
-    /**
+	protected $types;
+	protected $banks;
+
+	/**
+     * Create a new controller instance.
+     *
+     * @param  Banks  $types
+     * @param  AccountType  $banks
+     * @return void
+     */
+	public function __construct(AccountType $types, Bank $banks)
+	{
+		$this->types = $types;
+		$this->banks = $banks;
+	}
+
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -30,15 +42,11 @@ class AccountController extends Controller
      */
     public function create()
     {
-		$types = \DB::table('account_types')->get();
-		$banks = \DB::table('banks')->get();
+		$types = AccountType::all();
+		$banks = Bank::all();
 		return view('account.create', [
 			'types' => $types,
 			'banks' => $banks
-			/*
-			'types' => AccountType::all(),
-			'banks' => Bank::all()
-			 */
 		]);
     }
 
