@@ -33,7 +33,7 @@ class BankController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -91,6 +91,23 @@ class BankController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$bank = Bank::findOrFail($id);
+		$bank->delete();
+		return redirect('/banks');
     }
+
+	/**
+	* Show confirm delete button the specified resource.
+	*
+	* @param  int  $id
+	* @return \Illuminate\Http\Response
+	*/
+	public function confirmDelete($id)
+	{
+		// dd('confirmDelete ' . $id);
+		$bank = Bank::findOrFail($id);
+		return view('bank.delete',[
+			'bank' => $bank
+		]);
+	}
 }

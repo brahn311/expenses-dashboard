@@ -33,7 +33,7 @@ class AccountTypeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -91,6 +91,23 @@ class AccountTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$type = AccountType::findOrFail($id);
+		$type->delete();
+		return redirect('/account_types');
     }
+
+	/**
+	* Show confirm delete button the specified resource.
+	*
+	* @param  int  $id
+	* @return \Illuminate\Http\Response
+	*/
+	public function confirmDelete($id)
+	{
+		// dd('confirmDelete ' . $id);
+		$type = AccountType::findOrFail($id);
+		return view('accountType.delete', [
+			'type' => $type
+		]);
+	}
 }

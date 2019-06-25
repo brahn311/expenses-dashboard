@@ -54,7 +54,7 @@ class AccountController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResonse
+	 * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -75,7 +75,9 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-		//
+		$account = Account::findOrFail($id);
+		$account->delete();
+		return redirect('/accounts');
     }
 
 	/**
@@ -122,6 +124,23 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$account = Account::findOrFail($id);
+		$account->delete();
+		return redirect('/accounts');
     }
+
+	/**
+	* Show confirm delete button the specified resource.
+	*
+	* @param  int  $id
+	* @return \Illuminate\Http\Response
+	*/
+	public function confirmDelete($id)
+	{
+		// dd('confirmDelete ' . $id);
+		$account = Account::findOrFail($id);
+		return view('account.delete', [
+			'account' => $account
+		]);
+	}
 }

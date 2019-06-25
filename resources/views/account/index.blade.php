@@ -19,6 +19,7 @@
 						<tr>
 							<td>{{ $account->number }}</td>
 							<td><a href="/accounts/{{ $account->id }}/edit">Edit</a></td>
+							<td><a href="/accounts/{{ $account->id }}/confirm_delete">Delete</a></td>
 						</tr>
 					@endforeach
 				</table>
