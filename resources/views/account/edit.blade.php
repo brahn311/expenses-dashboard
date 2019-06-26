@@ -7,6 +7,15 @@
 				<h1>Edit Account {{ $account->id }}</h1>
 			</div>
 		</div>
+		@if($errors->any())
+			<div class="alert alert-danger">
+				<ul>
+					@foreach($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
 		<div class="row">
 			<div class="links">
 				<a class="btn btn-secondary" href="/accounts">Back</a>
@@ -31,7 +40,7 @@
 									<option value="{{ $type->id }}">{{ $type->name }}</option>
 								@endif
 							@empty
-							    <option disabled="" >No account types</option>
+							    <option disabled>No account type</option>
 							@endforelse
 						</select>
 					</div>
@@ -45,7 +54,7 @@
 									<option value="{{ $bank->id }}">{{ $bank->name }}</option>
 								@endif
 							@empty
-								<option disabled="" >No banks</option>
+								<option disabled>No banks</option>
 							@endforelse
 						</select>
 					</div>

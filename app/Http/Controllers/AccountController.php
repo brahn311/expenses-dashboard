@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use App\Http\Requests\AccountRequest;
 use App\{Account, AccountType, Bank};
-
 class AccountController extends Controller
 {
 	protected $types;
@@ -58,6 +58,12 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
+		$validated = $request->validate([
+			'number' => 'required|min:16|max:20',
+			'type_id' => 'required',
+			'bank_id' => 'required',
+			'branch' => 'nullable'
+		]);
 		$account = new Account();
 		$account->number = $request->get('number');
 		$account->type_id = $request->get('type_id');
@@ -107,6 +113,12 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
+		$validator = $request->validate([
+			'number' => 'required|min:16|max:20',
+			'type_id' => 'required',
+			'bank_id' => 'required',
+			'branch' => 'nullable|max:40'
+		]);
 		$account = Account::find($id);
 		$account->number = $request->get('number');
 		$account->type_id = $request->get('type_id');
