@@ -1,4 +1,4 @@
-@extends('layout.laravel-base')
+@extends('layout.base')
 
 @section('content')
 	<div class="content">
@@ -8,10 +8,14 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="links">
-				<a href="/banks/create">New Bank</a>
+			<div class="col">
+				<div class="links">
+					<a href="/">Home</a>
+					<a href="/banks/create">New Bank</a>
+				</div>
 			</div>
 		</div>
+		<hr>
 		<div class="row">
 			<div class="col">
 				<table class="table">

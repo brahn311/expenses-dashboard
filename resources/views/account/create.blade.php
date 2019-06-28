@@ -1,4 +1,4 @@
-@extends('layout.laravel-base')
+@extends('layout.base')
 
 @section('content')
 	<div class="content">
@@ -7,31 +7,42 @@
 				<h1>New Account</h1>
 			</div>
 		</div>
-		@if($errors->any())
-			<div class="alert alert-danger">
-				<ul>
-					@foreach($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
 		<div class="row">
-			<div class="links">
-				<a href="/accounts">Back</a>
+			<div class="col">
+				<div class="links">
+					<a href="/">Home</a>
+					<a href="/accounts">Back</a>
+				</div>
 			</div>
 		</div>
-		<div class="row">
+		<hr>
+		<div class="row justify-content-md-center">
+			<div class="col"></div>
+			<div class="col">
+				@if($errors->any())
+				<div class="alert alert-danger text-left">
+					<ul>
+						@foreach($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+				@endif
+			</div>
+			<div class="col"></div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col"></div>
 			<div class="col">
 				<form action="/accounts" method="POST">
 					@csrf
 					<div class="form-group">
 						<label for="number">Number:</label>
 						<input type="text" class="form-control form-control-lg" id="number" name="number" value="{{ old('number') }}" autocomplete="off" placeholder="Type an account number">
-						@$error('number')
-							<div class="alert alert-danger">{{ $message }}</div>
-						@enderror
 					</div>
+					@error('number')
+						<div class="alert alert-danger">{{ $message }}</div>
+					@enderror
 					<div class="form-group">
 						<label for="type_id">Type:</label>
 						<select class="form-control" id="type_id" name="type_id">
@@ -42,10 +53,10 @@
 							    <option disabled="">No account type</option>
 							@endforelse
 						</select>
-						@$error('type_id')
-							<div class="alert alert-danger">{{ $message }}</div>
-						@enderror
 					</div>
+					@error('type_id')
+						<div class="alert alert-danger">{{ $message }}</div>
+					@enderror
 					<div class="form-group">
 						<label for="bank_id">Bank:</label>
 						<select class="form-control" id="bank_id" name="bank_id">
@@ -56,10 +67,10 @@
 								<option disabled>No bank</option>
 							@endforelse
 						</select>
-						@$error('bank_id')
-							<div class="alert alert-danger">{{ $message }}</div>
-						@enderror
 					</div>
+					@error('bank_id')
+						<div class="alert alert-danger">{{ $message }}</div>
+					@enderror
 					<div class="form-group">
 						<label for="branch">Branch:</label>
 						<input type="text" class="form-control" id="branch" name="branch"  autocomplete="off" placeholder="Select a branch">
@@ -67,6 +78,7 @@
 					<button class="btn btn-primary" type="submit" >Submit</button>
 				</form>
 			</div>
+			<div class="col"></div>
 		</div>
 	</div>
 @endsection('content')

@@ -1,18 +1,23 @@
-@extends('layout.laravel-base')
+@extends('layout.base')
 
 @section('content')
 	<div class="content">
 		<div class="row">
 			<div class="col">
-				<h1>Edit Bank {{ $bank->id }}</h1>
+				<h1>Edit {{ $bank->name }}</h1>
 			</div>
 		</div>
 		<div class="row">
-			<div class="links">
-				<a href="/banks">Back</a>
+			<div class="col">
+				<div class="links">
+					<a href="/">Home</a>
+					<a href="/banks">Back</a>
+				</div>
 			</div>
 		</div>
-		<div class="row">
+		<hr>
+		<div class="row justify-content-md-center">
+			<div class="col"></div>
 			<div class="col">
 				<form action="/banks/{{ $bank->id }}" method="POST">
 					@csrf
@@ -21,12 +26,13 @@
 						<label for="name">Bank name:</label>
 						<input type="text" class="form-control" id="name" name="name" value="{{ $bank->name }}" autocomplete="off" placeholder="Type a name">
 					</div>
-					@$error('name')
+					@error('name')
 						<div class="alert alert-danger">{{ $message }}</div>
 					@enderror
 					<button class="btn btn-primary" type="submit" >Submit</button>
 				</form>
 			</div>
+			<div class="col"></div>
 		</div>
 	</div>
 @endsection('content')

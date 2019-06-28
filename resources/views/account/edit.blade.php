@@ -1,4 +1,4 @@
-@extends('layout.laravel-base')
+@extends('layout.base')
 
 @section('content')
 	<div class="content">
@@ -7,21 +7,32 @@
 				<h1>Edit Account {{ $account->id }}</h1>
 			</div>
 		</div>
-		@if($errors->any())
-			<div class="alert alert-danger">
-				<ul>
-					@foreach($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
 		<div class="row">
-			<div class="links">
-				<a href="/accounts">Back</a>
+			<div class="col">
+				<div class="links">
+					<a href="/">Home</a>
+					<a href="/accounts">Back</a>
+				</div>
 			</div>
 		</div>
-		<div class="row">
+		<hr>
+		@if($errors->any())
+		<div class="row justify-content-md-center">
+			<div class="col"></div>
+			<div class="col">
+				<div class="alert alert-danger">
+					<ul>
+						@foreach($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+			<div class="col"></div>
+		</div>
+		@endif
+		<div class="row justify-content-md-center">
+			<div class="col"></div>
 			<div class="col">
 				<form action="/accounts/{{ $account->id }}" method="POST">
 					@csrf
@@ -65,6 +76,7 @@
 					<button class="btn btn-primary" type="submit" >Submit</button>
 				</form>
 			</div>
+			<div class="col"></div>
 		</div>
 	</div>
 @endsection('content')
