@@ -59,7 +59,7 @@ class AccountController extends Controller
      */
     public function store(AccountValidator $request)
     {
-		$validated = $request->validate();
+		$validated = $request->validated();
 		$account = new Account();
 		$account->number = $request->get('number');
 		$account->type_id = $request->get('type_id');
@@ -107,7 +107,7 @@ class AccountController extends Controller
      */
     public function update(AccountValidator $request, $id)
     {
-		$validated = $request->validate();
+		$validated = $request->validated();
 		$account = Account::find($id);
 		$account->number = $request->get('number');
 		$account->type_id = $request->get('type_id');

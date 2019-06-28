@@ -38,7 +38,7 @@ class AccountTypeController extends Controller
      */
     public function store(NameValidator $request)
     {
-		$validated = $request->validate();
+		$validated = $request->validated();
 		$account_type = new AccountType();
 		$account_type->name = $request->get('name');
 		$account_type->save();
@@ -79,7 +79,7 @@ class AccountTypeController extends Controller
      */
     public function update(NameValidator $request, $id)
 	{
-		$validated = $request->validate();
+		$validated = $request->validated();
 		$type = AccountType::find($id);
 		$type->name = $request->get('name');
 		$type->save();

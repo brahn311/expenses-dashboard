@@ -38,7 +38,7 @@ class BankController extends Controller
      */
     public function store(NameValidator $request)
     {
-		$validated = $request->validate();
+		$validated = $request->validated();
 		$bank = new Bank();
 		$bank->name = $request->get('name');
 		$bank->save();
@@ -79,7 +79,7 @@ class BankController extends Controller
      */
     public function update(NameValidator $request, $id)
 	{
-		$validated = $request->validate();
+		$validated = $request->validated();
 		$bank = Bank::find($id);
 		$bank->name = $request->get('name');
 		$bank->save();
