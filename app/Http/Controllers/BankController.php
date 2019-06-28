@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\NameValidator;
 use App\Bank;
 
 class BankController extends Controller
@@ -35,8 +36,9 @@ class BankController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NameValidator $request)
     {
+		$validated = $request->validate();
 		$bank = new Bank();
 		$bank->name = $request->get('name');
 		$bank->save();
@@ -75,8 +77,9 @@ class BankController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(NameValidator $request, $id)
+	{
+		$validated = $request->validate();
 		$bank = Bank::find($id);
 		$bank->name = $request->get('name');
 		$bank->save();

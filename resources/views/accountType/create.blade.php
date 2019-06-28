@@ -9,7 +9,7 @@
 		</div>
 		<div class="row">
 			<div class="links">
-				<a class="btn btn-secondary" href="/account_types">Back</a>
+				<a href="/account_types">Back</a>
 			</div>
 		</div>
 		<div class="row">
@@ -20,6 +20,9 @@
 						<label for="name">Name:</label>
 						<input type="text" class="form-control" id="name" name="name"  autocomplete="off" placeholder="Type a name">
 					</div>
+					@$error('name')
+						<div class="alert alert-danger">{{ $message }}</div>
+					@enderror
 					<button class="btn btn-primary" type="submit" >Submit</button>
 				</form>
 			</div>

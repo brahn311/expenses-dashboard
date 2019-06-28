@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Http\Requests\AccountRequest;
+use App\Http\Requests\AccountValidator;
 use App\{Account, AccountType, Bank};
+
 class AccountController extends Controller
 {
 	protected $types;
@@ -56,14 +57,9 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AccountValidator $request)
     {
-		$validated = $request->validate([
-			'number' => 'required|min:16|max:20',
-			'type_id' => 'required',
-			'bank_id' => 'required',
-			'branch' => 'nullable'
-		]);
+		$validated = $request->validate();
 		$account = new Account();
 		$account->number = $request->get('number');
 		$account->type_id = $request->get('type_id');
@@ -81,9 +77,7 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-		$account = Account::findOrFail($id);
-		$account->delete();
-		return redirect('/accounts');
+		//
     }
 
 	/**
@@ -111,14 +105,9 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AccountValidator $request, $id)
     {
-		$validator = $request->validate([
-			'number' => 'required|min:16|max:20',
-			'type_id' => 'required',
-			'bank_id' => 'required',
-			'branch' => 'nullable|max:40'
-		]);
+		$validated = $request->validate();
 		$account = Account::find($id);
 		$account->number = $request->get('number');
 		$account->type_id = $request->get('type_id');

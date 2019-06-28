@@ -18,7 +18,7 @@
 		@endif
 		<div class="row">
 			<div class="links">
-				<a class="btn btn-secondary" href="/accounts">Back</a>
+				<a href="/accounts">Back</a>
 			</div>
 		</div>
 		<div class="row">
@@ -27,7 +27,10 @@
 					@csrf
 					<div class="form-group">
 						<label for="number">Number:</label>
-						<input type="text" class="form-control" id="number" name="number" value="{{ old('number') }}" autocomplete="off" placeholder="Type an account number">
+						<input type="text" class="form-control form-control-lg" id="number" name="number" value="{{ old('number') }}" autocomplete="off" placeholder="Type an account number">
+						@$error('number')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
 					</div>
 					<div class="form-group">
 						<label for="type_id">Type:</label>
@@ -39,6 +42,9 @@
 							    <option disabled="">No account type</option>
 							@endforelse
 						</select>
+						@$error('type_id')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
 					</div>
 					<div class="form-group">
 						<label for="bank_id">Bank:</label>
@@ -50,6 +56,9 @@
 								<option disabled>No bank</option>
 							@endforelse
 						</select>
+						@$error('bank_id')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
 					</div>
 					<div class="form-group">
 						<label for="branch">Branch:</label>
