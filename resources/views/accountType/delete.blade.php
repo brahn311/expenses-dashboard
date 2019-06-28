@@ -9,7 +9,7 @@
 		</div>
 		<div class="row">
 			<div class="links">
-				<a class="btn btn-secondary" href="/account_types">Back</a>
+				<a href="/account_types">Back</a>
 			</div>
 		</div>
 		<div class="row">
