@@ -20,6 +20,7 @@ Route::get('/laravel', function () {
 Route::get('/account_types/{id}/confirm_delete', 'AccountTypeController@confirmDelete');
 Route::get('/accounts/{id}/confirm_delete', 'AccountController@confirmDelete');
 Route::get('/banks/{id}/confirm_delete', 'BankController@confirmDelete');
+Route::get('/categories/{category}/confirm_delete', 'CategoryController@confirmDelete');
 Route::resources([
 	'/account_types' => 'AccountTypeController',
 	'/accounts' => 'AccountController',

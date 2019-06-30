@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\NameValidator;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+		return view('category.index',[
+			'categories' => Category::all()
+		]);
     }
 
     /**
@@ -24,18 +27,22 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+		return view('category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\NameValidator  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NameValidator $request)
     {
-        //
+		$validated = $request->validated();
+		$category = new Category();
+		$category->name = $request->get('name');
+		$category->save();
+		return redirect('/categories');
     }
 
     /**
@@ -57,19 +64,24 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+		return view('category.edit',[
+			'category' => $category
+		]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests/NameValidator  $request
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(NameValidator $request, Category $category)
     {
-        //
+		$validated = $request->validated();
+		$category->name = $request->get('name');
+		$category->save();
+		return redirect('/categories');
     }
 
     /**
@@ -80,6 +92,20 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+		$category->delete();
+		return redirect('/categories');
     }
+
+	/**
+	* Show confirm delete button the specified resource.
+	*
+	* @param  \App\Category  $category
+	* @return \Illuminate\Http\Response
+	*/
+	public function confirmDelete(Category $category)
+	{
+		return view('category.confirmDelete',[
+			'category' => $category
+		]);
+	}
 }

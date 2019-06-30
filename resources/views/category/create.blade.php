@@ -1,0 +1,37 @@
+@extends('layout.base')
+
+@section('content')
+	<div class="content">
+		<div class="row">
+			<div class="col">
+				<h1>New Category</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="links">
+					<a href="/">Home</a>
+					<a href="/categories">Categories</a>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row justify-content-md-center">
+			<div class="col"></div>
+			<div class="col">
+				<form action="/categories" method="POST">
+					@csrf
+					<div class="form-group">
+						<label for="name">Category name:</label>
+						<input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a name">
+					</div>
+					@error('name')
+						<div class="alert alert-danger">{{ $message }}</div>
+					@enderror
+					<button class="btn btn-primary" type="submit" >Submit</button>
+				</form>
+			</div>
+			<div class="col"></div>
+		</div>
+	</div>
+@endsection('content')
