@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bank extends Model
 {
-	use SoftDeletes();
+	use SoftDeletes;
 }
