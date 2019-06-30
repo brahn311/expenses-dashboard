@@ -6,30 +6,31 @@ use Illuminate\Database\Migrations\Migration;
 
 class UpdateBanksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::table('banks', function (Blueprint $table) {
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::table('banks', function (Blueprint $table) {
 			$table->string('name', 40)
-				  ->nullable(false)
-				  ->after('id')
-				  ->comment('Bank name');
-        });
-    }
+				->nullable(false)
+				->after('id')
+				->comment('Bank name');
+			$table->softDeletes();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('banks', function (Blueprint $table) {
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::table('banks', function (Blueprint $table) {
 			$table->dropColumn('name');
-        });
-    }
+		});
+	}
 }

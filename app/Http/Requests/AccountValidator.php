@@ -25,9 +25,6 @@ class AccountValidator extends FormRequest
 	{
 		return [
 			'number' => 'required|min:16|max:20',
-			'type_id' => 'required',
-			'bank_id' => 'required',
-			'branch' => 'nullable'
 		];
 	}
 
@@ -40,8 +37,6 @@ class AccountValidator extends FormRequest
 	{
 		return [
 			'number' => 'account number',
-			'type_id' => 'account type',
-			'bank_id' => 'bank'
 		];
 	}
 }
