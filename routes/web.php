@@ -17,17 +17,17 @@ Route::get('/', function () {
 Route::get('/laravel', function () {
 	return view('welcome');
 });
-Route::resource('/accounts', 'AccountController');
-Route::resources([
-	'/account_types' => 'AccountTypeController',
-	'/banks' => 'BankController',
-	'/document_types' => 'DocumentTypeController',
-	'/holders' => 'HolderController',
-	'/categories' => 'CategoryController',
-	'/statuses' => 'StatusController',
-	'/transactions' => 'TransactionController',
-	'/comments' => 'CommentController'
-]);
-Route::get('/banks/{id}/confirm_delete', 'BankController@confirmDelete');
 Route::get('/account_types/{id}/confirm_delete', 'AccountTypeController@confirmDelete');
 Route::get('/accounts/{id}/confirm_delete', 'AccountController@confirmDelete');
+Route::get('/banks/{id}/confirm_delete', 'BankController@confirmDelete');
+Route::resources([
+	'/account_types' => 'AccountTypeController',
+	'/accounts' => 'AccountController',
+	'/banks' => 'BankController',
+	'/categories' => 'CategoryController',
+	'/comments' => 'CommentController',
+	'/document_types' => 'DocumentTypeController',
+	'/holders' => 'HolderController',
+	'/statuses' => 'StatusController',
+	'/transactions' => 'TransactionController',
+]);
