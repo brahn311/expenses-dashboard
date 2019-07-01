@@ -11,7 +11,7 @@
 			<div class="col">
 				<div class="links">
 					<a href="/">Home</a>
-					<a href="/categories">Categories</a>
+					<a href="/categories">Back</a>
 				</div>
 			</div>
 		</div>

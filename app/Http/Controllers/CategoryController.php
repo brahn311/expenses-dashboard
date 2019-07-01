@@ -72,7 +72,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Requests/NameValidator  $request
+     * @param  \App\Requests\NameValidator  $request
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
@@ -104,7 +104,7 @@ class CategoryController extends Controller
 	*/
 	public function confirmDelete(Category $category)
 	{
-		return view('category.confirmDelete',[
+		return view('category.confirmDelete', [
 			'category' => $category
 		]);
 	}

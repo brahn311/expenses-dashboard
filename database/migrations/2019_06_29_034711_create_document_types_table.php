@@ -15,7 +15,7 @@ class CreateDocumentTypesTable extends Migration
 	{
 		Schema::create('document_types', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->string('name',2)->nullable(false)->comment('Document type name');
+			$table->string('name', 20)->nullable(false)->comment('Document type name');
 			$table->timestamps();
 			$table->SoftDeletes();
 		});

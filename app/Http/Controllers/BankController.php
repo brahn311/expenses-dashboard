@@ -33,7 +33,7 @@ class BankController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\NameValidator  $request
      * @return \Illuminate\Http\Response
      */
     public function store(NameValidator $request)
@@ -64,6 +64,7 @@ class BankController extends Controller
      */
     public function edit($id)
     {
+		dd($id);
 		$bank = Bank::findOrFail($id);
 		return view('bank.edit', [
 			'bank' => $bank
@@ -73,7 +74,7 @@ class BankController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\NameValidator  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
