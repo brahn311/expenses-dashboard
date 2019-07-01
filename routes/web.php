@@ -21,8 +21,11 @@ Route::get('/account_types/{id}/confirm_delete', 'AccountTypeController@confirmD
 Route::get('/accounts/{id}/confirm_delete', 'AccountController@confirmDelete');
 Route::get('/banks/{id}/confirm_delete', 'BankController@confirmDelete');
 Route::get('/categories/{category}/confirm_delete', 'CategoryController@confirmDelete');
+// Route::get('/comments/{id}/confirm_delete', 'CommentControlle@confirmDeleter);
 Route::get('/document_types/{document_type}/confirm_delete', 'DocumentTypeController@confirmDelete');
+// Route::get('/holders/{id}/confirm_delete', 'HolderController@confirmDelete');
 Route::get('/statuses/{status}/confirm_delete', 'StatusController@confirmDelete');
+// Route::get('/transactions/{id}/confirm_delete', 'TransactionController@confirmDelete');
 Route::resources([
 	'/account_types' => 'AccountTypeController',
 	'/accounts' => 'AccountController',
