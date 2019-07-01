@@ -9,6 +9,7 @@
 			<a href="/accounts">Accounts</a>
 			<a href="/banks">Banks</a>
 			<a href="/categories">Categories</a>
+			<a href="/document_types">Document Types</a>
 			<a href="/statuses">Statuses</a>
 		</div>
 	</div>

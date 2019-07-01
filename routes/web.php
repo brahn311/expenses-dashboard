@@ -21,6 +21,7 @@ Route::get('/account_types/{id}/confirm_delete', 'AccountTypeController@confirmD
 Route::get('/accounts/{id}/confirm_delete', 'AccountController@confirmDelete');
 Route::get('/banks/{id}/confirm_delete', 'BankController@confirmDelete');
 Route::get('/categories/{category}/confirm_delete', 'CategoryController@confirmDelete');
+Route::get('/document_types/{document_type}/confirm_delete', 'DocumentTypeController@confirmDelete');
 Route::get('/statuses/{status}/confirm_delete', 'StatusController@confirmDelete');
 Route::resources([
 	'/account_types' => 'AccountTypeController',

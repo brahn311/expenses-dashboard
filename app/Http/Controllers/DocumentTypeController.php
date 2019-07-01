@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DocumentType;
 use Illuminate\Http\Request;
+use App\Http\Requests\NameValidator;
 
 class DocumentTypeController extends Controller
 {
@@ -14,7 +15,9 @@ class DocumentTypeController extends Controller
      */
     public function index()
     {
-        //
+		return view('documentType.index', [
+			'documentTypes' => DocumentType::all()
+		]);
     }
 
     /**
@@ -24,7 +27,7 @@ class DocumentTypeController extends Controller
      */
     public function create()
     {
-        //
+		return view('documentType.create');
     }
 
     /**
@@ -35,16 +38,22 @@ class DocumentTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$validator = $request->validate([
+			'name' => 'required|min:2|max:2'
+		]);
+		$document_type = new DocumentType();
+		$document_type->name = $request->get('name');
+		$document_type->save();
+		return redirect('/document_types');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\DocumentType  $DocumentType
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function show(DocumentType $DocumentType)
+    public function show(DocumentType $documentType)
     {
         //
     }
@@ -52,34 +61,55 @@ class DocumentTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\DocumentType  $DocumentType
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function edit(DocumentType $DocumentType)
+    public function edit(DocumentType $documentType)
     {
-        //
+		return view('documentType.edit', [
+			'documentType' => $documentType
+		]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DocumentType  $DocumentType
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DocumentType $DocumentType)
+    public function update(Request $request, DocumentType $documentType)
     {
-        //
+		$validator = $request->validate([
+			'name' => 'required|min:2|max:2'
+		]);
+		$documentType->name = $request->get('name');
+		$documentType->save();
+		return redirect('/document_types');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\DocumentType  $DocumentType
+     * @param  \App\DocumentType  $documentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DocumentType $DocumentType)
+    public function destroy(DocumentType $documentType)
     {
-        //
+		$documentType->delete();
+		return redirect('/document_types');
     }
+
+	/**
+	* Show button to confirm delete the specified resource.
+	*
+	* @param  \App\DocumentType  $documentType
+	* @return \Illuminate\Http\Response
+	*/
+	public function confirmDelete(DocumentType $documentType)
+	{
+		return view('documentType.confirmDelete', [
+			'documentType' => $documentType
+		]);
+	}
 }
