@@ -35,12 +35,10 @@
 						<div class="form-group col-md-4">
 							<label for="type_id">Type:</label>
 							<select class="form-control" id="type_id" name="type_id">
-								<option selected disabled>Select account type</option>
-								@forelse ($types as $type)
+								<option selected disabled>...</option>
+								@foreach($types as $type)
 									<option value="{{ $type->id }}">{{ $type->name }}</option>
-								@empty
-								    <option disabled="">No account type</option>
-								@endforelse
+								@endforeach
 							</select>
 						</div>
 						@error('type_id')

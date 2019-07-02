@@ -41,7 +41,18 @@ class HolderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$validated = $request->validate([
+			'first_name' => 'required',
+			'last_name' => 'nullable',
+			'type_id' => 'nullable',
+			'document' => 'required'
+		]);
+		$holder = new Holder();
+		$holder->first_name = $request->get('first_name');
+		$holder->last_name = $request->get('last_name');
+		$holder->type_id = $request->get('type_id');
+		$holder->document = $request->get('document');
+		$holder->save();
     }
 
     /**
