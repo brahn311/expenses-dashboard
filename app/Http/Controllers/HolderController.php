@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Holder;
 use Illuminate\Http\Request;
+use App\DocumentType;
 
 class HolderController extends Controller
 {
@@ -14,7 +15,9 @@ class HolderController extends Controller
      */
     public function index()
     {
-        //
+		return view('holder.index', [
+			'holders' => Holder::all()
+		]);
     }
 
     /**
@@ -22,9 +25,12 @@ class HolderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(DocumentType $types)
     {
-        //
+		$types = DocumentType::all();
+		return view('holder.create', [
+			'types' => $types
+		]);
     }
 
     /**
