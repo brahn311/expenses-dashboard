@@ -17,11 +17,11 @@ class CreateHoldersTable extends Migration
 			$table->bigIncrements('id');
 			$table->string('first_name', 40)->nullable(false)->comment('Holder first name');
 			$table->string('last_name', 40)->comment('Holder last name');
-			$table->UnsignedBigInteger('type_id')->nullable()->comment('Document type id');
+			$table->UnsignedBigInteger('document_type_id')->nullable()->comment('Document type id');
 			$table->string('document', 9)->comment('Document id');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->foreign('type_id')->references('id')->on('document_types')->onDelete('cascade')->onUpdate('cascade');
+			$table->foreign('document_type_id')->references('id')->on('document_types')->onDelete('cascade')->onUpdate('cascade');
 		});
 	}
 

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DocumentType extends Model
 {
 	use SoftDeletes;
+
+	public function holders()
+	{
+		return $this->hasMany(Holder::class);
+	}
 }

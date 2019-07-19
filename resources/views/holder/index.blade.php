@@ -22,10 +22,11 @@
 					@foreach($holders as $holder)
 						<tr>
 							<td>{{ $holder->id }}</td>
-							<td>{{ $holder->first_name }}</td>
-							<td>{{ $holder->last_name }}</td>
-							<td>{{ $holder->type_id }}</td>
-							<td>{{ $holder->document }}</td>
+							<td>{{ $holder->first_name }} {{ $holder->last_name }}</td>
+							<td>
+								{{ $holder->documentType->name }}
+								{{ $holder->document }}
+							</td>
 							<td><a href="/holders/{{ $holder->id }}/edit">Edit</a></td>
 							<td><a href="/holders/{{ $holder->id }}/confirm_delete">Delete</a></td>
 						</tr>

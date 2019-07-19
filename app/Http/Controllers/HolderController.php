@@ -44,15 +44,16 @@ class HolderController extends Controller
 		$validated = $request->validate([
 			'first_name' => 'required',
 			'last_name' => 'nullable',
-			'type_id' => 'nullable',
+			'document_type_id' => 'required',
 			'document' => 'required'
 		]);
 		$holder = new Holder();
 		$holder->first_name = $request->get('first_name');
 		$holder->last_name = $request->get('last_name');
-		$holder->type_id = $request->get('type_id');
+		$holder->document_type_id = $request->get('document_type_id');
 		$holder->document = $request->get('document');
 		$holder->save();
+		return redirect('/holders');
     }
 
     /**
@@ -70,11 +71,16 @@ class HolderController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Holder  $holder
+     * @param  \App\DocumentType  $types
      * @return \Illuminate\Http\Response
      */
-    public function edit(Holder $holder)
+    public function edit(Holder $holder, DocumentType $types)
     {
-        //
+		$types = DocumentType::all();
+		return view('holder.edit', [
+			'holder' => $holder,
+			'types' => $types
+		]);
     }
 
     /**
@@ -86,7 +92,18 @@ class HolderController extends Controller
      */
     public function update(Request $request, Holder $holder)
     {
-        //
+		$validated = $request->validate([
+			'first_name' => 'required',
+			'last_name' => 'nullable',
+			'document_type_id' => 'required',
+			'document' => 'required'
+		]);
+		$holder->first_name = $request->get('first_name');
+		$holder->last_name = $request->get('last_name');
+		$holder->document_type_id = $request->get('document_type_id');
+		$holder->document = $request->get('document');
+		$holder->save();
+		return redirect('/holders');
     }
 
     /**
