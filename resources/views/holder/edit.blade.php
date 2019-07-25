@@ -4,7 +4,7 @@
 <div class="content">
 	<div class="row">
 		<div class="col">
-			<h1>Edit Holder:</h1>
+			<h1>Edit Holder: {{ $holder->first_name }}</h1>
 		</div>
 	</div>
 	<div class="row">

@@ -23,6 +23,7 @@ class HolderController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+	 * @param  \App\DocumentType  $types
      * @return \Illuminate\Http\Response
      */
     public function create(DocumentType $types)
@@ -114,6 +115,20 @@ class HolderController extends Controller
      */
     public function destroy(Holder $holder)
     {
-        //
+		$holder->delete();
+		return redirect('/holders');
     }
+
+	/**
+	 * Show confirm delete button the specified resource.
+	 *
+	 * @param  \App\Holder  $holder
+	 * @return \Illuminate\Http\Response
+	 */
+	public function confirmDelete(Holder $holder)
+	{
+		return view('holder.confirmDelete', [
+			'holder' => $holder
+		]);
+	}
 }
