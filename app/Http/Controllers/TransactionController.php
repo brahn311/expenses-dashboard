@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Http\Request;
+use App\Account;
 
 class TransactionController extends Controller
 {
@@ -14,17 +15,23 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+		return view('transaction.index',[
+			'transactions' => Transaction::all()
+		]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+ 	* @param  \App\Account  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Account $accounts)
     {
-        //
+		$accounts = Account::all();
+		return view('transaction.create', [
+			'accounts' => $accounts
+		]);
     }
 
     /**
