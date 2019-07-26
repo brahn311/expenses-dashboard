@@ -20,75 +20,57 @@
 			<div class="col">
 				<form action="/transactions" method="POST">
 					@csrf
-
-					<div class="form-group">
-						<label for="account_id">Account Number:</label>
-						<select class="form-control" id="document_type_id" name="document_type_id">
-							<option selected disabled>...</option>
-							@forelse($accounts as $account)
-								<option value="{{ $account->id }}">{{ $account->name }}</option>
-							@empty
-								<option>Not Set</option>
-							@endforelse
-						</select>
-					</div>
-
-					<label for="reference">Reference:</label>
-					<div class="form-group">
-						<input type="text" class="form-control form-control-lg" id="reference" name="reference" value="" autocomplete="off" placeholder="Type an reference">
-					</div>
-
-					<!--
-					<div class="form-group">
-						<label for="date">Date:</label>
-						<input type="text" class="form-control form-control-lg" id="date" name="date" value="" autocomplete="off" placeholder="Type an date">
-					</div>
-
-					<div class="form-group">
-						<label for="amount">Amount:</label>
-						<input type="text" class="form-control form-control-lg" id="amount" name="amount" value="" autocomplete="off" placeholder="Type an amount">
-					</div>
-
-					<div class="form-group">
-						<label for="category_id">category_id</label>
-						<input type="text" class="form-control form-control-lg" id="category_id" name="category_id" value="" autocomplete="off" placeholder="Type an category_id">
-					</div>
-
-					<div class="form-group">
-						<label for="status_id">status_id</label>
-						<input type="text" class="form-control form-control-lg" id="status_id" name="status_id" value="" autocomplete="off" placeholder="Type an status_id">
-					</div>
-					-->
-
 					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="name">First name:</label>
-							<input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" placeholder="Type a first name">
-						</div>
-						<div class="form-group col-md-6">
-							<label for="name">Last name:</label>
-							<input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" placeholder="Type a last name">
-						</div>
-					</div>
-
-					<div class="form-row">
-						<div class="form-group col-md-4">
-							<label for="type_id">Type:</label>
-							<select class="form-control" id="document_type_id" name="document_type_id">
-								<option selected>...</option>
+						<div class="form-group col-md">
+							<label for="account_id">Account:</label>
+							<select class="form-control form-control-md" id="document_type_id" name="document_type_id">
+								<option selected disabled>...</option>
 								@forelse($accounts as $account)
-									<option value="{{ $account->id }}">{{ $account->name }}</option>
+									<option value="{{ $account->id }}">{{ $account->number }} - {{ $account->bank_id }}</option>
 								@empty
-									<option>Not Set</option>
+									<option>Null</option>
 								@endforelse
 							</select>
 						</div>
-						@error('type_id')
-							<div class="alert alert-danger">{{ $message }}</div>
-						@enderror
-						<div class="form-group  col-md-8">
-							<label for="name">Document Identity:</label>
-							<input type="text" class="form-control" id="document" name="document" autocomplete="off" placeholder="Type a document identity">
+						<div class="form-group col-md-2">
+							<label for="status_id">Status:</label>
+							<select class="form-control form-control-md" id="staus_id" name="staus_id">
+								<option selected disabled>...</option>
+								@forelse($statuses as $status)
+									<option value="{{ $status->id }}">{{ $status->name }}</option>
+								@empty
+									<option>Null</option>
+								@endforelse
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="category_id">Category</label>
+							<select class="form-control form-control-md" id="category_id" name="category_id">
+								<option selected disabled>...</option>
+								@forelse($categories as $category)
+									<option value="{{ $category->id }}">{{ $category->name }}</option>
+								@empty
+									<option>Null</option>
+								@endforelse
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-2">
+							<label for="date">Date:</label>
+							<input type="text" class="form-control form-control-md" id="date" name="date" value="" autocomplete="off" placeholder="DD/MM/YYYY">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="reference">Reference:</label>
+							<input type="text" class="form-control form-control-md" id="reference" name="reference" value="" autocomplete="off" placeholder="Nº Ref.">
+						</div>
+						<div class="form-group col-md">
+							<label for="description">Description:</label>
+							<input type="text" class="form-control" id="description" name="description" autocomplete="off" placeholder="Type a description">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="amount">Amount:</label>
+							<input type="text" class="form-control form-control-md" id="amount" name="amount" value="" autocomplete="off" placeholder="Type numbers">
 						</div>
 					</div>
 					@error('name')

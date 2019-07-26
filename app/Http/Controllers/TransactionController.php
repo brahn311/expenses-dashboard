@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Http\Request;
-use App\Account;
+use App\{Account, Status, Category};
 
 class TransactionController extends Controller
 {
@@ -23,14 +23,20 @@ class TransactionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
- 	* @param  \App\Account  $accounts
+	 * @param  \App\Account  $accounts
+	 * @param  \App\Status   $status
+	 * @param  \App\Category $categories
      * @return \Illuminate\Http\Response
      */
-    public function create(Account $accounts)
+    public function create(Account $accounts, Status $statuses, Category $categories)
     {
 		$accounts = Account::all();
+		$statuses = Status::all();
+		$categories = Category::all();
 		return view('transaction.create', [
-			'accounts' => $accounts
+			'accounts' => $accounts,
+			'statuses' => $statuses,
+			'categories' => $categories
 		]);
     }
 
